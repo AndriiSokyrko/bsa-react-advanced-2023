@@ -50,12 +50,12 @@ class Http {
         message: response.statusText
       }));
 
-        throw  JSON.stringify({
+        throw JSON.stringify({
           status: response.status,
           message: parsedException?.message
         });
     }
-
+    return response;
   }
 
   _getUrl(url, query) {

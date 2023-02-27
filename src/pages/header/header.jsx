@@ -24,7 +24,8 @@ const Header = (props) => {
     useEffect(() => {
         if(!token)   navigate(`${path}`);
         if(token) {
-            // navigate('/trips')
+            console.log(token)
+            navigate('/trips')
         }
     },[auth.user.error, navigate, token, path])
 
