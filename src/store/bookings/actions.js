@@ -9,7 +9,8 @@ const allBookings = createAsyncThunk(
           const bookings = await services.booking.allBookings();
           return bookings;
       } catch (e){
-          notification.info(e.message, 'Info', 1000);
+          const e_ = JSON.parse(e)
+          notification.info(e_.message, 'Info', 1000);
       }
   }
 );
@@ -20,7 +21,8 @@ const addBooking = createAsyncThunk(
           const booking = await services.booking.addBooking(payload);
           return booking;
       } catch (e){
-          notification.info(e.message, 'Info', 1000);
+          const e_ = JSON.parse(e)
+          notification.info(e_.message, 'Info', 1000);
       }
   }
 );

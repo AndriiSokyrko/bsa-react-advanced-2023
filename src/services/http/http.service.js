@@ -41,20 +41,21 @@ class Http {
 
     return headers;
   }
-
+   customError = (obj) => {
+    return obj;
+  }
   async _checkStatus(response) {
     if (!response.ok) {
-
-      const parsedException = await response.json().catch(() => ({
+       const parsedException = await response.json().catch(() => ({
         message: response.statusText
       }));
-        throw ({
-        status: response.status,
-        message: parsedException?.message
-      });
+
+        throw  JSON.stringify({
+          status: response.status,
+          message: parsedException?.message
+        });
     }
 
-    return response;
   }
 
   _getUrl(url, query) {

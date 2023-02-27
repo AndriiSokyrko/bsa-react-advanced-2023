@@ -9,7 +9,8 @@ const allTrips = createAsyncThunk(
           const trips = await services.trip.getTrips();
           return trips;
       } catch (e){
-          notification.info(e.message, 'Info', 1000);
+          const e_ = JSON.parse(e)
+          notification.info(e_.message, 'Info', 1000);
       }
   }
 );
@@ -21,7 +22,8 @@ const getTripById = createAsyncThunk(
             const trip = await services.trip.getTripById(tripId);
             return trip;
        } catch (e){
-           notification.info(e.message, 'Info', 1000);
+           const e_ = JSON.parse(e)
+           notification.info(e_.message, 'Info', 1000);
        }
   }
 );

@@ -14,9 +14,10 @@ const signIn = createAsyncThunk(
             return {...user,error:null};
 
         } catch (e) {
-            notification.error(e.message,'Info',1000)
+            const e_ = JSON.parse(e)
+            notification.error(e_.message,'Info')
             clearError();
-            return {id:null,error: e.message}
+            return {id:null,error: e_.message}
         }
   }
 );
@@ -29,9 +30,10 @@ const signUp = createAsyncThunk(
           services.storage.setItem('TOKEN', token);
           return {...user,error:null};
       } catch (e) {
-          notification.info(e.message, 'Info',1000);
+           const e_ = JSON.parse(e)
+          notification.info(e_.message, 'Info',500);
           clearError()
-          return {id:null,error: e.message}
+          return {id:null,error: e_.message}
       }
   }
 );
@@ -43,9 +45,10 @@ const signOut = createAsyncThunk(
             services.storage.removeItem('TOKEN');
             return;
         } catch (e) {
-            notification.info(e.message, 'Info', 1000);
+            const e_ = JSON.parse(e)
+            notification.info(e_.message, 'Info', 1000);
             clearError()
-            return {id: null, error: e.message}
+            return {id: null, error: e_.message}
         }
     }
 );
